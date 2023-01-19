@@ -26,3 +26,12 @@ source_details {
 
 
 }
+
+
+coreinstance/variables.tf
+========================
+variable "environment" {}
+variable "node_count" {}
+variable "node_type" {}
+variable display_name {}
+variable "availability_domain" { type = list }
