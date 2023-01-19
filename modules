@@ -1,1 +1,28 @@
+coreinstance/main.tf
 
+data "oci_identity_availability_domains" "test_availability_domains" {
+    #Required
+    compartment_id ="ocid1.tenancy.oc1..aaaaaaaasg7dmeaivai6jirpcbl23ms3z4aohftxghilvru5b2eceujefw6a"
+
+}
+
+
+resource "oci_core_instance" "oracle_instance" {
+    # Required
+    availability_domain = "${data.oci_identity_availability_domains.test_availability_domains.availability_domains[0].name}"
+    compartment_id = "copy-your-compartment-ocid"
+    shape = "VM.Standard2.1"
+    display_name="${var.environment}"
+    create_vnic_details {
+        assign_public_ip = true
+        subnet_id = "copy-yoursubnet-id"
+    }
+source_details {
+        source_id = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaakdhqh6dpn2tucmbulza6soypejxz7nphi3oy2iorrs4f5em6n3pa"
+        source_type = "image"
+     }
+   
+
+
+
+}
