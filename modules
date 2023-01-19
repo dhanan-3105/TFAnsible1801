@@ -35,3 +35,16 @@ variable "node_count" {}
 variable "node_type" {}
 variable display_name {}
 variable "availability_domain" { type = list }
+
+
+environments/dev/main.tf
+=======================
+
+module "dev-coreinstance" {
+  source             = "../../coreinstance"
+  display_name       = "devinstance"
+  environment        = "dev"
+  node_count         = 1
+  node_type          = "ORACLELOGVM.Standard.E.2.2"
+  availability_domain = ["FD1"]
+}
