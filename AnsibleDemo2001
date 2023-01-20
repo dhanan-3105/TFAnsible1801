@@ -140,7 +140,7 @@ Repo Management
     service: name=httpd state=restarted
     
     
-    - hosts: localhost
+- hosts: localhost
   connection: local
   become: yes
   tasks:
