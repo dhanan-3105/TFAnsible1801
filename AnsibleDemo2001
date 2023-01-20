@@ -7,3 +7,15 @@ regions:
 compartments:
  - compartment_ocid: "ocid1.compartment.oc1..aaaaaaaato3f4p57z5o7wfnsknoujteysazgqw6uhc6vt3wl6v6iz74uihba"
    fetch_hosts_from_subcompartments: false
+
+file.yaml
+=========
+---
+- hosts: localhost
+  become: true
+  tasks:
+    - name : create file
+      file: path=/tmp/testfile state=touch
+    - name : print
+      debug:
+       msg: file created
