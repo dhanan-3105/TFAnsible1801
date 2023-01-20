@@ -166,3 +166,20 @@ getns.yaml
     - name: Print namespace name
       debug:
         msg: "{{ output }}"
+
+
+- name : List summary
+  collections:
+    - oracle.oci
+  connection: local
+  hosts: localhost
+  tasks:
+   - name: List availability domains
+     oci_identity_availability_domain_facts:
+     # required
+       compartment_id: "ocid1.tenancy.oc1..aaaaaaaasg7dmeaivai6jirpcbl23ms3z4aohftxghilvru5b2eceujefw6a"
+     register: result
+
+   - name : print ADs
+     debug:
+       msg: {{ result }}
