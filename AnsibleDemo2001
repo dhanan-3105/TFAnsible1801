@@ -32,6 +32,9 @@ install.yaml
       - git
       - htop
 
+
+Remotecheck.yaml
+================
 - name: read file on host
   hosts: all
   remote_user: opc
@@ -52,3 +55,4 @@ install.yaml
    - name: closure
      ansible.builtin.debug:
         msg : "file created in {{inventory_hostname}}"
+
