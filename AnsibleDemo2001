@@ -19,3 +19,15 @@ file.yaml
     - name : print
       debug:
        msg: file created
+
+install.yaml
+---
+ - hosts: localhost
+   become: true
+   tasks:
+   - name: install packages
+     yum: name={{item}} state=latest
+     loop:
+      - openssl-devel
+      - git
+      - htop
